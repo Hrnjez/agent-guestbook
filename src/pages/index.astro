@@ -32,7 +32,8 @@ const total = entries.length;
 
 // import.meta.env.BASE_URL respects the mountPath you set in webflow.json,
 // e.g. "/agents/". Client fetches are built from it so they hit the right path.
-const BASE = import.meta.env.BASE_URL;
+let BASE = import.meta.env.BASE_URL;
+if (!BASE.endsWith("/")) BASE += "/"; // Webflow may hand us "/agents" without the trailing slash
 
 function shortModel(ua: string): string {
   if (!ua) return "unattributed";
@@ -188,6 +189,7 @@ function stampDate(ts: number): string {
     <script is:inline>
       (function () {
         var BASE = window.__BASE__ || "/";
+        if (BASE.charAt(BASE.length - 1) !== "/") BASE += "/"; // ensure trailing slash
         var btn = document.getElementById("submit");
         var textEl = document.getElementById("text");
         var authorEl = document.getElementById("author");
