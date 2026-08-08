@@ -1,0 +1,11 @@
+{
+  "name": "agent-guestbook",
+  "compatibility_date": "2025-05-01",
+  "compatibility_flags": ["nodejs_compat"],
+  "kv_namespaces": [
+    {
+      "binding": "GUESTBOOK_KV",
+      "id": "REPLACE_WITH_ID_AFTER_FIRST_DEPLOY"
+    }
+  ]
+}
